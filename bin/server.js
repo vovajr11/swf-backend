@@ -1,13 +1,5 @@
-const mongoose = require('mongoose');
-
 const app = require('../app');
 
-const { DB_HOST } = process.env;
-
-mongoose
-  .connect(DB_HOST)
-  .then(() => app.listen(process.env.PORT || 8080))
-  .catch(error => {
-    console.log(error.message);
-    process.exit(1);
-  });
+app.listen(process.env.PORT || 8080, () =>
+  console.log(`Server started on PORT: 8080`),
+);
