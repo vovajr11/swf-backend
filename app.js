@@ -1,10 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
-const mongoose = require('mongoose');
 require('dotenv').config();
-
-const { DB_HOST } = process.env;
 
 // const productsRouter = require("./routes/api/products");
 const authRouter = require('./routes/api/auth');
@@ -19,14 +16,6 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
-
-mongoose
-  .connect(DB_HOST)
-  .then(() => console.log('MongoBD Connected...'))
-  .catch(error => {
-    console.log(error.message);
-    process.exit(1);
-  });
 
 // app.use('/api/products', productsRouter)
 app.use('/api/auth', authRouter);
