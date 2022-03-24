@@ -5,7 +5,7 @@ const add = async (req, res) => {
 
   res.status(201).json({
     code: 201,
-    data: { id, name, description, modules },
+    course: { id, name, description, modules },
   });
 };
 

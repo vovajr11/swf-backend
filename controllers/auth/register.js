@@ -26,7 +26,12 @@ const register = async (req, res) => {
   res.status(201).json({
     code: 201,
     data: {
-      user: { id: userId, email: result.email, name: result.name },
+      user: {
+        id: userId,
+        email: result.email,
+        name: result.name,
+        role: result.role,
+      },
       token,
     },
   });

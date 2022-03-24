@@ -1,15 +1,16 @@
 const { Course, Module } = require('../../models');
 
 const add = async (req, res) => {
-  const courseId = req.params.courseId;
+  const courseId = req.body.courseId;
 
-  console.log(req.params.courseId, 'req.params.id');
-  const { _id: id, name, description } = await Module.create(req.body);
+  console.log(req.body.courseId, '- req.body');
+
+  const { _id, name, description } = await Module.create(req.body);
 
   await Course.findByIdAndUpdate(
     courseId,
     {
-      $push: { modules: id },
+      $push: { modules: _id },
     },
     {
       new: true,
@@ -18,7 +19,7 @@ const add = async (req, res) => {
 
   res.status(201).json({
     code: 201,
-    data: { id: id, name, description },
+    module: { _id, name, description },
   });
 };
 
