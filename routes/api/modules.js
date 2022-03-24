@@ -6,6 +6,6 @@ const { modules: ctrl } = require('../../controllers');
 
 const router = express.Router();
 
-router.post('/:courseId', validation(joiModuleSchema), ctrlWrapper(ctrl.add));
+router.post('/', validation(joiModuleSchema), ctrlWrapper(ctrl.add));
 
 module.exports = router;

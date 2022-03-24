@@ -8,6 +8,7 @@ const authRouter = require('./routes/api/auth');
 const usersRouter = require('./routes/api/users');
 const coursesRouter = require('./routes/api/courses');
 const modulesRouter = require('./routes/api/modules');
+const chaptersRouter = require('./routes/api/chapters');
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', DOMAIN_NAME);
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader(
     'Access-Control-Allow-Methods',
     'GET, POST, OPTIONS, PUT, PATCH, DELETE',
@@ -39,6 +40,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/courses', coursesRouter);
 app.use('/api/modules', modulesRouter);
+app.use('/api/chapters', chaptersRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });

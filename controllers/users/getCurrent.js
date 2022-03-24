@@ -1,15 +1,16 @@
 const { User } = require('../../models');
 
 const getCurrent = async (req, res) => {
-  const { name, email, id } = req.user;
+  const { id, name, email, role } = req.user;
 
   res.json({
     status: 'succes',
     code: 200,
     data: {
+      id,
       name,
       email,
-      id,
+      role,
     },
   });
 };
