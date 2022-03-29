@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.get('/courses-details', ctrlWrapper(ctrl.getDetailsOfAllCourses));
 
+router.get('/:id', ctrlWrapper(ctrl.getById));
+
 router.post('/', validation(joiCourseSchema), ctrlWrapper(ctrl.add));
 
 module.exports = router;

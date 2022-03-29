@@ -15,13 +15,14 @@ const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 const { DOMAIN_NAME } = process.env;
+const localHost = 'http://localhost:3000';
 
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', DOMAIN_NAME);
+  res.setHeader('Access-Control-Allow-Origin', localHost);
   res.setHeader(
     'Access-Control-Allow-Methods',
     'GET, POST, OPTIONS, PUT, PATCH, DELETE',
