@@ -5,6 +5,7 @@ const courseSchema = Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   modules: [{ type: Schema.Types.ObjectId, ref: 'module' }],
+  isVisible: { type: Boolean, default: false },
 });
 
 const joiCourseSchema = Joi.object({
