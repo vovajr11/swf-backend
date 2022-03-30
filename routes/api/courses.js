@@ -9,6 +9,10 @@ const router = express.Router();
 router.get('/courses-details', ctrlWrapper(ctrl.getDetailsOfAllCourses));
 router.get('/courses-details-admin', ctrlWrapper(ctrl.getCourseForAdmin));
 router.get('/:id', ctrlWrapper(ctrl.getById));
+router.patch(
+  '/switch-visibility-course/:id',
+  ctrlWrapper(ctrl.switchVisibilityCourse),
+);
 router.post('/', validation(joiCourseSchema), ctrlWrapper(ctrl.add));
 
 module.exports = router;
