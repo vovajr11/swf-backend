@@ -10,6 +10,12 @@ const moduleSchema = Schema({
       name: { type: String },
     },
   ],
+  quizzes: [
+    {
+      id: { type: String, ref: 'quiz' },
+      name: { type: String },
+    },
+  ],
 });
 
 const joiModuleSchema = Joi.object({

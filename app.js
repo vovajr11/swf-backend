@@ -9,12 +9,16 @@ const usersRouter = require('./routes/api/users');
 const coursesRouter = require('./routes/api/courses');
 const modulesRouter = require('./routes/api/modules');
 const chaptersRouter = require('./routes/api/chapters');
+const quizzesRouter = require('./routes/api/quizzes');
 
 const app = express();
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 const { DOMAIN_NAME } = process.env;
+
+console.log(DOMAIN_NAME, 'process.env');
+
 const localHost = 'http://localhost:3000';
 
 app.use(logger(formatsLogger));
@@ -42,6 +46,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/courses', coursesRouter);
 app.use('/api/modules', modulesRouter);
 app.use('/api/chapters', chaptersRouter);
+app.use('/api/quizzes', quizzesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });

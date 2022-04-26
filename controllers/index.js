@@ -4,6 +4,7 @@ const users = require('./users');
 const courses = require('./courses');
 const modules = require('./modules');
 const chapters = require('./chapters');
+const quizzes = require('./quizzes');
 
 module.exports = {
   products,
@@ -12,4 +13,5 @@ module.exports = {
   courses,
   modules,
   chapters,
+  quizzes,
 };
