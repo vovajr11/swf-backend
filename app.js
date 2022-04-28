@@ -17,8 +17,6 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 const { DOMAIN_NAME } = process.env;
 
-console.log(DOMAIN_NAME, 'process.env');
-
 const localHost = 'http://localhost:3000';
 
 app.use(logger(formatsLogger));

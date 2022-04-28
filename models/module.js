@@ -14,6 +14,7 @@ const moduleSchema = Schema({
     {
       id: { type: String, ref: 'quiz' },
       name: { type: String },
+      quizType: { type: String },
     },
   ],
 });

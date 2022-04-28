@@ -3,4 +3,9 @@ const ctrlWrapper = require('./ctrlWrapper');
 const auth = require('./auth');
 const prepareCoursesResponse = require('./prepareCoursesResponse');
 
-module.exports = { validation, ctrlWrapper, auth, prepareCoursesResponse };
+module.exports = {
+  validation,
+  ctrlWrapper,
+  auth,
+  prepareCoursesResponse,
+};

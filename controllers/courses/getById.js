@@ -6,7 +6,7 @@ const getById = async (req, res) => {
   const { id } = req.params;
   const course = await Course.findById(id).populate({
     path: 'modules',
-    select: ['name', 'description', 'chapters'],
+    select: ['name', 'description', 'chapters', 'quizzes'],
   });
 
   if (!course) {

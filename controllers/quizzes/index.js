@@ -1,7 +1,7 @@
-const add = require('./add');
+const addQuizChooseTheCorrectAnswer = require('./addQuizChooseTheCorrectAnswer');
 const removeById = require('./removeById');
 
 module.exports = {
-  add,
+  addQuizChooseTheCorrectAnswer,
   removeById,
 };

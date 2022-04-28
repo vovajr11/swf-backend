@@ -7,7 +7,11 @@ const { joiQuizSchema } = require('../../models/quiz');
 
 const router = express.Router();
 
-router.post('/add', validation(joiQuizSchema), ctrlWrapper(ctrl.add));
+router.post(
+  '/add-quiz-choose-the-correct-answer',
+  validation(joiQuizSchema),
+  ctrlWrapper(ctrl.addQuizChooseTheCorrectAnswer),
+);
 router.delete('/remove', ctrlWrapper(ctrl.removeById));
 
 module.exports = router;
