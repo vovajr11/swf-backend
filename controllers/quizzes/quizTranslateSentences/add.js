@@ -1,14 +1,16 @@
-const { Module, Chapter } = require('../../models');
+const { Module, QuizTranslateSentencesModel } = require('../../../models');
 
 const add = async (req, res) => {
   const moduleId = req.body.moduleId;
 
-  const { _id, name, content } = await Chapter.create(req.body);
+  const { _id, name, quizType } = await QuizTranslateSentencesModel.create(
+    req.body,
+  );
 
   await Module.findByIdAndUpdate(
     moduleId,
     {
-      $push: { chapters: { _id, name } },
+      $push: { quizzes: { _id, name, quizType } },
     },
     {
       new: true,
@@ -17,7 +19,6 @@ const add = async (req, res) => {
 
   res.status(201).json({
     code: 201,
-    chapter: { _id, name, content },
   });
 };
 

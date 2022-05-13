@@ -6,14 +6,13 @@ const quizSchema = Schema({
   quizType: { type: String, required: true },
   data: [
     {
-      question: { type: String, required: true },
-      correctAnswer: { type: String, required: true },
-      answers: [{ type: String, required: true }],
+      sentenceToBeTranslated: { type: String, required: true },
+      translatedSentence: { type: String },
     },
   ],
 });
 
-const joiQuizSchema = Joi.object({
+const joiQuizTranslateSentencesSchema = Joi.object({
   name: Joi.string().min(3).required().messages({
     'string.empty': 'Введіть назву вікторини!',
     'string.min': `Назва вікторини мінімум {#limit} символи!`,
@@ -27,6 +26,12 @@ const joiQuizSchema = Joi.object({
   }),
 });
 
-const Quiz = model('quiz', quizSchema);
+const QuizTranslateSentencesModel = model(
+  'quiz-translate-sentences',
+  quizSchema,
+);
 
-module.exports = { joiQuizSchema, Quiz };
+module.exports = {
+  joiQuizTranslateSentencesSchema,
+  QuizTranslateSentencesModel,
+};

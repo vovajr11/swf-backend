@@ -1,9 +1,10 @@
-const { BadRequest } = require('http-errors');
-const { Module, Quiz } = require('../../models');
+const { Module, QuizChooseTheCorrectAnswerModel } = require('../../../models');
 
 const addQuizChooseTheCorrectAnswer = async (req, res) => {
   const moduleId = req.body.moduleId;
-  const { _id, name, quizType } = await Quiz.create(req.body);
+  const { _id, name, quizType } = await QuizChooseTheCorrectAnswerModel.create(
+    req.body,
+  );
 
   await Module.findByIdAndUpdate(
     moduleId,

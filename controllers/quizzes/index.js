@@ -1,12 +1,21 @@
-const addQuizChooseTheCorrectAnswer = require('./addQuizChooseTheCorrectAnswer');
-const removeById = require('./removeById');
+// const removeById = require('./removeById');
 const getQuizzes = require('./getQuizzes');
 const getQuizzesByModuleId = require('./getQuizzesByModuleId');
-const getQuizById = require('./getQuizById');
+
+const addQuizChooseTheCorrectAnswer = require('./quizChooseTheCorrectAnswer/add');
+const getQuizChooseTheCorrectAnswerById = require('./quizChooseTheCorrectAnswer/getById');
+
+const addQuizTranslateSentences = require('./quizTranslateSentences/add');
+const getQuizTranslateSentencesById = require('./quizTranslateSentences/getById');
+
 module.exports = {
-  addQuizChooseTheCorrectAnswer,
-  removeById,
+  // removeById,
   getQuizzes,
   getQuizzesByModuleId,
-  getQuizById,
+
+  addQuizChooseTheCorrectAnswer,
+  getQuizChooseTheCorrectAnswerById,
+
+  addQuizTranslateSentences,
+  getQuizTranslateSentencesById,
 };

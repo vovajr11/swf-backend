@@ -3,7 +3,12 @@ const express = require('express');
 const { validation, ctrlWrapper } = require('../../middlewares');
 
 const { quizzes: ctrl } = require('../../controllers');
-const { joiQuizSchema } = require('../../models/quiz');
+const {
+  joiQuizChooseTheCorrectAnswer,
+} = require('../../models/quizChooseTheCorrectAnswer');
+const {
+  joiQuizTranslateSentencesSchema,
+} = require('../../models/quizTranslateSentences');
 
 const router = express.Router();
 
@@ -12,13 +17,31 @@ router.get(
   '/get-quizzes-by-module-id/:id',
   ctrlWrapper(ctrl.getQuizzesByModuleId),
 );
-router.get('/get-quiz-by-id/:id', ctrlWrapper(ctrl.getQuizById));
+
+// -------------- QuizChooseTheCorrectAnswer --------------
+router.get(
+  '/get-quiz-choose-the-correct-answer-by-id/:id',
+  ctrlWrapper(ctrl.getQuizChooseTheCorrectAnswerById),
+);
 
 router.post(
   '/add-quiz-choose-the-correct-answer',
-  validation(joiQuizSchema),
+  validation(joiQuizChooseTheCorrectAnswer),
   ctrlWrapper(ctrl.addQuizChooseTheCorrectAnswer),
 );
-router.delete('/remove', ctrlWrapper(ctrl.removeById));
+// ----------------------------------------------------------
+
+// ---------- QuizTranslateSentencesSchema ----------
+router.get(
+  '/get-quiz-translate-sentences-by-id/:id',
+  ctrlWrapper(ctrl.getQuizTranslateSentencesById),
+);
+
+router.post(
+  '/add-quiz-translate-sentences',
+  validation(joiQuizTranslateSentencesSchema),
+  ctrlWrapper(ctrl.addQuizTranslateSentences),
+);
+// ----------------------------------------------------------
 
 module.exports = router;

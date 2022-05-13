@@ -8,8 +8,6 @@ const auth = async (req, res, next) => {
   const { authorization = '' } = req.headers;
   const [bearer, token] = authorization.split(' ');
 
-  console.log(token, 'token');
-
   try {
     if (bearer !== 'Bearer') {
       throw new Unauthorized('Ви не авторизовані');

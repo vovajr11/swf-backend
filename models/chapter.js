@@ -7,9 +7,16 @@ const chapterSchema = Schema({
 });
 
 const joiChapterSchema = Joi.object({
-  name: Joi.string().required(),
-  content: Joi.string().required(),
-  moduleId: Joi.string().required(),
+  name: Joi.string().min(3).required().messages({
+    'string.empty': 'Введіть назву вікторини!',
+    'string.min': `Назва вікторини мінімум {#limit} символи!`,
+  }),
+  content: Joi.string().min(20).required().messages({
+    'string.min': `Контент повинен мати мінімум: {#limit} символів!`,
+  }),
+  moduleId: Joi.string().required().messages({
+    'string.empty': 'Додайте назву модуля!',
+  }),
 });
 
 const Chapter = model('chapter', chapterSchema);
